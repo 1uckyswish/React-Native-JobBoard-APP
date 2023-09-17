@@ -8,6 +8,7 @@ import { Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome} from "../components"
 
 const Home = () => {
     const router = useRouter();
+    const [searchTerm, setSearchTerm] = useState("");
 
 
 
@@ -34,7 +35,11 @@ const Home = () => {
                 padding: SIZES.medium
             }}
             >
-            <Welcome />
+            <Welcome searchTerm={setSearchTerm} setSearchTerm={setSearchTerm} handleClick={()=> {
+                if(searchTerm){
+                    router.push(`/search/${searchTerm}`)
+                }
+            }}/>
              <Popularjobs />
              <Nearbyjobs />
             </View>
